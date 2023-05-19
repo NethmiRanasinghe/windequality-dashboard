@@ -53,7 +53,7 @@ app.layout = html.Div(
             options=[{'label': col, 'value': col} for col in data.columns],
             value=data.columns[0]
         )
-    ], style={'width': '30%', 'display': 'inline-block'}),
+    ], style={'width': '30%', 'display': 'inline-block', 'padding-right':'20px'}),
     
     html.Div([
         html.Label('Feature 2 (Y-axis)'),
@@ -68,37 +68,46 @@ app.layout = html.Div(
     
     # Wine quality prediction based on input feature values
     html.H3("Wine Quality Prediction"),
-    html.Div([
-        html.Label("Fixed Acidity"),
-        dcc.Input(id='fixed_acidity', type='number', required=True),    
-        html.Label("Volatile Acidity"),
-        dcc.Input(id='volatile_acidity', type='number', required=True), 
-        html.Label("Citric Acid"),
-        dcc.Input(id='citric_acid', type='number', required=True),
-        html.Br(),
-        
-        html.Label("Residual Sugar"),
-        dcc.Input(id='residual_sugar', type='number', required=True),  
-        html.Label("Chlorides"),
-        dcc.Input(id='chlorides', type='number', required=True), 
-        html.Label("Free Sulfur Dioxide"),
-        dcc.Input(id='free_sulfur_dioxide', type='number', required=True),
-        html.Br(),
-        
-        html.Label("Total Sulfur Dioxide"),
-        dcc.Input(id='total_sulfur_dioxide', type='number', required=True),
-        html.Label("Density"),
-        dcc.Input(id='density', type='number', required=True),
-        html.Label("pH"),
-        dcc.Input(id='ph', type='number', required=True),
-        html.Br(),
-        
-        html.Label("Sulphates"),
-        dcc.Input(id='sulphates', type='number', required=True),
-        html.Label("Alcohol"),
-        dcc.Input(id='alcohol', type='number', required=True),
-        html.Br(),
-    ]),
+        html.Div([html.Table([
+            html.Tr([
+                html.Td(html.Label("Fixed Acidity")),
+                html.Td(dcc.Input(id='fixed_acidity', type='number', required=True)),
+                html.Td(html.Label("Volatile Acidity")),
+                html.Td(dcc.Input(id='volatile_acidity', type='number', required=True))
+            ], style={'margin': '10px'}),
+            html.Tr([
+                html.Td(html.Label("Citric Acid")),
+                html.Td(dcc.Input(id='citric_acid', type='number', required=True)),
+                html.Td(html.Label("Residual Sugar")),
+                html.Td(dcc.Input(id='residual_sugar', type='number', required=True))
+            ], style={'padding': '10px'}),
+            
+            html.Tr([
+                html.Td(html.Label("Chlorides")),
+                html.Td(dcc.Input(id='chlorides', type='number', required=True)),
+                html.Td(html.Label("Free Sulfur Dioxide")),
+                html.Td(dcc.Input(id='free_sulfur_dioxide', type='number', required=True))
+            ], style={'padding': '10px'}),
+
+            html.Tr([
+                html.Td(html.Label("Total Sulfur Dioxide")),
+                html.Td(dcc.Input(id='total_sulfur_dioxide', type='number', required=True)),
+                html.Td(html.Label("Density")),
+                html.Td(dcc.Input(id='density', type='number', required=True))
+            ], style={'padding': '10px'}),
+
+            html.Tr([
+                html.Td(html.Label("pH")),
+                html.Td(dcc.Input(id='ph', type='number', required=True)),
+                html.Td(html.Label("Sulphates")),
+                html.Td(dcc.Input(id='sulphates', type='number', required=True))
+            ], style={'padding': '10px'}),
+
+            html.Tr([
+                html.Td(html.Label("Alcohol")),
+                html.Td(dcc.Input(id='alcohol', type='number', required=True))
+            ], style={'padding': '10px'}),
+        ], style= { 'border-collapse': 'collapse', "width": '100%','margin-bottom': '30px', }),]),
 
     html.Div([
         html.Button('Predict', id='predict-button', n_clicks=0),
