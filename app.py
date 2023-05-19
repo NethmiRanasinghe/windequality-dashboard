@@ -115,8 +115,8 @@ app.layout = html.Div(
 
     html.Div([
         html.H4("Predicted Quality"),
-        html.Div(id='prediction-output')
-    ])
+        html.Div(id='prediction-output',  style={'margin': '30px'})
+    ], style={'text-align':'center'})
 ])
 
 # Define the callback to update the correlation plot
