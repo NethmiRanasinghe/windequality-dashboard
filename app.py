@@ -9,7 +9,7 @@ from dash import dcc, html
 from dash.dependencies import Input, Output, State
 
  # Load dataset
-data = pd.read_csv('winequality-red.csv')
+data = pd.read_csv('data/winequality-red.csv')
 # Check for missing values
 data.isna().sum()
 # Remove duplicate data
@@ -111,7 +111,7 @@ app.layout = html.Div(
 
     html.Div([
         html.Button('Predict', id='predict-button', n_clicks=0),
-    ]),
+    ], style={'text-align':'center'}),
 
     html.Div([
         html.H4("Predicted Quality"),
